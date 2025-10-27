@@ -3,11 +3,15 @@
 //
 
 #pragma once
+#include "AbstractMitarbeiterVisitor.h"
+#include "../LohnEmpfaenger.h"
+namespace mitarbeiter::visitor {
 
-namespace visitor {
-
-    class ResetArbeitszeitVisitor {
-
+    class ResetArbeitszeitVisitor: public AbstractMitarbeiterVisitor{
+    public:
+        void visit(LohnEmpfaenger &lohn_empfaenger) override {
+            lohn_empfaenger.setArbeitszeit(0);
+        }
     };
 
 } // visitor
