@@ -10,7 +10,7 @@ int main() {
 
     std::string line;
     while(true) {
-        std::cout << "#>";
+        std::cout << "#>" ;
         std::getline(std::cin, line);
 
         if(line == "ende") break;
@@ -32,6 +32,7 @@ int main() {
         }
         command->execute();
         history.add(command);
+
     }
     return 0;
 }
