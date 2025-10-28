@@ -5,9 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Tag2_02Command main.cpp
         math/Calculator.h
-        command/Command.h
-        command/AbstractCommand.h
-        command/PrintCommand.h
-        command/AddCommand.h
-        command/CommandFactory.h
-        command/CommandHistory.h)
+)

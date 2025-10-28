@@ -1,14 +1,12 @@
 //
-// Created by JoachimWagner on 28.10.2025.
+// Created by JoachimWagner on 01.07.2025.
 //
 
 #pragma once
-
 #include <memory>
 #include <iostream>
 #include <stack>
 #include "Command.h"
-
 namespace command {
     using CommandPointer = std::shared_ptr<Command>;
 

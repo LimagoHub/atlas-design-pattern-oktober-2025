@@ -1,5 +1,5 @@
 //
-// Created by JoachimWagner on 28.10.2025.
+// Created by JoachimWagner on 01.07.2025.
 //
 
 #pragma once
@@ -10,13 +10,16 @@
 namespace command {
 
     class Command {
-        public:
-            using StringVector=std::vector<std::string>;
-            virtual ~Command() = default;
-            virtual auto parse(const StringVector &tokens) ->void = 0;
-            virtual auto execute()->void = 0;
-            virtual auto undo()->void = 0;
-            virtual auto isQuery()->bool = 0;
+
+
+
+    public:
+        using StringVector=std::vector<std::string>;
+        virtual ~Command() = default;
+        virtual auto parse(const StringVector &tokens) ->void = 0;
+        virtual auto execute()->void = 0;
+        virtual auto undo()->void = 0;
+        virtual auto isQuery()->bool = 0;
     };
 
 } // command
