@@ -7,6 +7,8 @@
 #include "Command.h"
 #include "AddCommand.h"
 #include "PrintCommand.h"
+#include "SubCommand.h"
+#include "ClearCommand.h"
 #include <regex>
 
 namespace command {
@@ -21,6 +23,14 @@ namespace command {
             const StringVector tokens =tokenizeLine(line);
             if(tokens[0]=="Add") {
                 result = std::make_shared<AddCommand>();
+                result->parse(tokens);
+            }
+            if(tokens[0]=="Sub") {
+                result = std::make_shared<SubCommand>();
+                result->parse(tokens);
+            }
+            if(tokens[0]=="Clear") {
+                result = std::make_shared<ClearCommand>();
                 result->parse(tokens);
             }
             if(tokens[0] == "Print"){
