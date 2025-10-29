@@ -4,23 +4,30 @@
 
 #pragma once
 #include "AbstractBankNode.h"
-class Konto : public AbstractBankNode{
-public:
-    using AbstractBankNode::AbstractBankNode;
-    void print(std::ostream &os) const override {
-        os << std::string{"Konto: "};
-        AbstractBankNode::print(os);
-        os << " Saldo: " << getSaldo();
-    }
+namespace composite {
+    class Konto : public AbstractBankNode {
+    public:
+        using AbstractBankNode::AbstractBankNode;
 
-    double getSaldo() const {
-        return saldo;
-    }
+        void print(std::ostream &os) const override {
+            os << std::string{"Konto: "};
+            AbstractBankNode::print(os);
+            os << " Saldo: " << getSaldo();
+        }
 
-    void setSaldo(double saldo) {
-        Konto::saldo = saldo;
-    }
+        double getSaldo() const {
+            return saldo;
+        }
 
-private:
-    double saldo{0};
-};
+        void setSaldo(double saldo) {
+            Konto::saldo = saldo;
+        }
+
+        void accept(visitor::konto_visitor &visitor) override {
+            visitor.visit(*this);
+        }
+
+    private:
+        double saldo{0};
+    };
+}

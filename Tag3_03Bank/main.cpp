@@ -2,6 +2,8 @@
 #include <memory>
 #include "composite/KontoGruppe.h"
 #include "composite/Konto.h"
+#include "composite/visitor/PrintVisitor.h"
+using namespace composite;
 
 int main() {
     auto root = std::make_shared<KontoGruppe>("Root");
@@ -28,10 +30,9 @@ int main() {
     e2->append(e2_1);
     e2->append(e2_2);
 
-    for(auto & item: *root) {
-        std::cout << item << std::endl;
-    }
+    visitor::PrintVisitor printVisitor;
 
+    root->iterate(printVisitor);
 
 
 }

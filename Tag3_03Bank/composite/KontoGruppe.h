@@ -5,24 +5,29 @@
 #pragma once
 
 #include "AbstractBankNode.h"
+namespace composite {
+    class KontoGruppe : public AbstractBankNode {
+    public:
 
-class KontoGruppe : public AbstractBankNode{
-public:
+        using AbstractBankNode::AbstractBankNode;
 
-    using AbstractBankNode::AbstractBankNode;
-    void print(std::ostream &os) const override {
-        os << std::string{"KontoGruppe: "};
-        AbstractBankNode::print(os);
-    }
+        void print(std::ostream &os) const override {
+            os << std::string{"KontoGruppe: "};
+            AbstractBankNode::print(os);
+        }
 
-    auto getChildren() const -> const Children & override {
-        return children;
-    }
+        auto getChildren() const -> const Children & override {
+            return children;
+        }
 
-    auto append(AbstractNodeShared child)-> void {
-        child->setParent(weak_from_this());
-        children.push_back(child);
-    }
-private:
-    Children children;
-};
+        auto append(AbstractNodeShared child) -> void {
+            child->setParent(weak_from_this());
+            children.push_back(child);
+        }
+        void accept(visitor::konto_visitor &visitor) override {
+            visitor.visit(*this);
+        }
+    private:
+        Children children;
+    };
+}
